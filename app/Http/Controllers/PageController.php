@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\DB;
 class PageController extends Controller
 {
     //
+    public function create_category (Request $request) {
+        DB::table('categories')
+    }
+
     public function create_something(Request $request){
         // dd($request);
         $aspect = isset($request->aspect) && $request->aspect!= null ? $request->aspect : false;
