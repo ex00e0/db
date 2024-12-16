@@ -12,10 +12,6 @@
                 <label for="exampleInputPassword1" class="form-label">Название</label>
                 <input required type="text" name="name" class="form-control">
             </div>
-            
-          
-        
-    
     <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
 @endsection

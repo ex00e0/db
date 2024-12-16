@@ -14,51 +14,59 @@ class PageController extends Controller
 {
     //
     public function create_category (Request $request) {
-        DB::table('categories')
+        DB::table('categories')->insert([
+            "name" => $request->name,
+        ]);
+        return redirect('/')->withErrors(["message" => 'Категория создана']);
     }
 
-    public function create_something(Request $request){
-        // dd($request);
-        $aspect = isset($request->aspect) && $request->aspect!= null ? $request->aspect : false;
-        if($aspect == 'categories'){
-            $type = ['string'];
-            $row = ['name'];
-            $labels = ['Имя'];
+    public function create_product (Request $request) {
+        // dd($request->all());
+        $extention = $request->file('image')->getClientOriginalName();
+        $request->file('image')->move(public_path() . '/images/items', $extention);
+       
+        if ($request->new == true) {
+           $new = 1;
+        } 
+        else {
+            $new = 0;
         }
-        else if($aspect == 'couriers'){
-            $type = ['string', 'string', ['Свободен','Занят']];
-            $row = ['name', 'phone', 'status'];
-            $labels = ['Имя',"Номер телефона", "Статус"];
+        if ($request->hit == true) {
+            $hit = 1;
+        } 
+        else {
+            $hit = 0;
         }
-        else if($aspect == 'products'){
-            $cat = DB::table('categories')->select('id', 'name')->get();
-            $type = [$cat, 'string', 'numeric', 'file', 'numeric', 'textarea', 'numeric'];
-            $row = ['categories', 'name', 'current_price', 'image', 'weight', 'compound', 'discount'];
-            $labels = ['Категория',"Имя", "Цена", "Изображение", "Вес", "Состав", "Скидка"];
-        }
-        else if($aspect == 'users'){
-            $type = ['string', 'email', 'string', 'password', ['admin', 'user']];
-            $row = ['name', 'email', 'phone', 'password', 'role'];
-            $labels = ['Имя',"Почта", "Номер телефона", "Пароль", "Роль"];
-        }
-        $json_for_controller = json_encode($row);
-        return view('task1', ['aspect'=>$aspect, 'type'=>$type, 'row'=>$row, 'labels'=>$labels, 'json_for_controller'=>$json_for_controller]);
-    }
-
-    public function create_row(Request $request){
+        DB::table('products')->insert([
+            "name" => $request->name,
+            "category_id" => $request->category_id,
+            "current_price" => $request->current_price,
+            "image" => $extention,
+            "weight" => $request->weight,
+            "compound" => $request->compound,
+            "new" => $new,
+            "hit" => $hit,
+        ]);
         
-
-        $array_for_create = [];
-        foreach(json_decode($request->json_for_controller) as $name_row){
-            if($name_row == 'password'){
-                $array_for_create[$name_row] = Hash::make($request->$name_row);
-            }
-            else{
-                $array_for_create[$name_row] = $request->$name_row;
-            }
-        }
-        $create_row = DB::table($request->aspect)->insert($array_for_create);
-        dd(json_decode( $create_row));
-        // return
+        return redirect('/')->withErrors(["message" => 'Продукт создан']);
     }
+
+    public function create_user (Request $request) {
+        DB::table('users')->insert([
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+        ]);
+        return redirect('/')->withErrors(["message" => 'Пользователь создан']);
+    }
+
+    public function create_courier (Request $request) {
+        DB::table('couriers')->insert([
+            "name" => $request->name,
+            "phone" => $request->phone,
+        ]);
+        return redirect('/')->withErrors(["message" => 'Курьер создан']);
+    }
+
 }
