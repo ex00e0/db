@@ -28,6 +28,43 @@ Route::get('/q1_couriers', function(){return view('q1_couriers');})->name('q1_co
 Route::get('/q1_categories', function(){return view('q1_categories');})->name('q1_categories');
 Route::get('/q1_users', function(){return view('q1_users');})->name('q1_users');
 Route::get('/q1_users', function(){return view('q1_users');})->name('q1_users');
+
+
+Route::get('/q2', function(){
+    $query2 = DB::table('products')->select('products.*')->get();
+    return view('q2', ['q'=>$query2]);})->name('q2');
+Route::get('/q3', function(){
+    $query3 = DB::table('products')->select('products.*')->where('discount', '>', '20')->get();
+    return view('q3', ['q'=>$query3]);})->name('q3');
+Route::get('/q4', function(){
+    $query4 = DB::table('products')->select('products.*')->where('new', '=', 'yes')->get();
+    return view('q4', ['q'=>$query4]);})->name('q4');
+Route::get('/q5', function(){
+    $query5 = DB::table('products')->select('products.*')->where('compound', 'LIKE', '%шерсть%')->get();
+    return view('q5', ['q'=>$query5]);})->name('q5');
+Route::get('/q6', function(){
+    $query6 = DB::table('products')->select('products.*')->where('weight', '<', '200')->get();
+    return view('q6', ['q'=>$query6]);})->name('q6');
+Route::get('/q7', function(){
+    $category_id = DB::table('categories')->select('id')->where('name', '=', 'Овощи')->get()[0]->id;
+    $query7 = DB::table('products')->select('products.*')->where('category_id', '=', $category_id)->get();
+    return view('q7', ['q'=>$query7]);})->name('q7');
+Route::get('/q8', function(){
+    $query8 = DB::table('categories')->select('categories.*')->orderBy('name', 'ASC')->get();
+    return view('q8', ['q'=>$query8]);})->name('q8');
+Route::get('/q9', function(){
+    $query9 = DB::table('users')->where('role', '=', 'user')->update(['role'=> 'client']);  
+    return back()->withErrors(['message'=>'Роли изменены']);})->name('q9');
+Route::get('/q10', function(){
+    $query10 = DB::table('couriers')->select('couriers.*')->where('name', 'LIKE', '%иван')->get();
+    return view('q10', ['q'=>$query10]);})->name('q10');
+Route::get('/q11', function(){
+    $query11 = DB::table('couriers')->select('couriers.*')->where('status', '=', 'Свободен')->get();
+    return view('q11', ['q'=>$query11]);})->name('q11');
+Route::get('/q12', function(){
+    $query12 = DB::table('couriers')->where('status', '=', 'Занят')->update(['status'=> 'Свободен']);
+    return back()->withErrors(['message'=>'Статус курьеров изменен']);})->name('q12');
+
 Route::get('/q13', function(){
     $query13 = DB::table('products')->select('products.*')->where('weight', '=', 200)->where('date_remove', '=', NULL)->get();
     return view('q13', ['q' => $query13]);})->name('q13');

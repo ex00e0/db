@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 16 2024 г., 20:14
+-- Время создания: Дек 16 2024 г., 20:56
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -43,7 +43,7 @@ INSERT INTO `categories` (`id`, `name`, `date_remove`, `created_at`, `updated_at
 (1, 'Категория 1', NULL, NULL, NULL),
 (2, 'Категория 2', NULL, NULL, NULL),
 (3, 'Категория 3', NULL, NULL, NULL),
-(4, 'Категория 4', NULL, NULL, NULL);
+(4, 'Овощи', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,8 @@ CREATE TABLE `couriers` (
 --
 
 INSERT INTO `couriers` (`id`, `name`, `phone`, `status`, `date_remove`, `created_at`, `updated_at`) VALUES
-(1, 'Курьер 1', '77755757575', 'свободен', NULL, NULL, NULL);
+(1, 'Курьер 1', '77755757575', 'свободен', NULL, NULL, NULL),
+(2, 'Иван', '3823840203', 'занят', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -200,12 +201,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `current_price`, `old_price`, `image`, `weight`, `compound`, `new`, `hit`, `discount`, `date_remove`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Продукт 1', '2020.00', NULL, 'free-icon-comment-upload-17558719.png', 100, '1, 2, 3', 0, 0, NULL, NULL, NULL, NULL),
-(2, 1, 'Продукт 2', '3334.00', NULL, 'download.png', 48, '------', 0, 0, NULL, NULL, NULL, NULL),
-(3, 1, 'Продукт 3', '4338.00', NULL, 'download.png', 200, '323', 1, 0, NULL, NULL, NULL, NULL),
+(1, 2, 'Продукт 1', '2020.00', NULL, 'free-icon-comment-upload-17558719.png', 100, '1, 2, 3', 0, 0, 25, NULL, NULL, NULL),
+(2, 1, 'Продукт 2', '3334.00', NULL, 'download.png', 48, '------шерсть', 0, 0, 2, NULL, NULL, NULL),
+(3, 1, 'Продукт 3', '4338.00', NULL, 'download.png', 200, '323', 1, 0, 15, NULL, NULL, NULL),
 (4, 4, 'Продукт 4', '10055.00', NULL, 'free-icon-comment-upload-17558719.png', 200, '-----', 0, 1, NULL, NULL, NULL, NULL),
-(5, 4, 'Продукт 5', '55.00', NULL, 'download.png', 566, '+-', 1, 1, NULL, NULL, NULL, NULL),
-(6, 3, 'Продукт 6', '233.00', NULL, 'free-icon-comment-upload-17558719.png', 482, '+_+_', 0, 0, NULL, NULL, NULL, NULL);
+(5, 4, 'Продукт 5', '55.00', NULL, 'download.png', 566, '+-', 1, 1, 0, NULL, NULL, NULL),
+(6, 3, 'Продукт 6', '233.00', NULL, 'free-icon-comment-upload-17558719.png', 482, '+_+_', 0, 0, 24, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -235,7 +236,7 @@ CREATE TABLE `users` (
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('admin','user') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `role` enum('admin','user','client') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -327,7 +328,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT для таблицы `couriers`
 --
 ALTER TABLE `couriers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `migrations`

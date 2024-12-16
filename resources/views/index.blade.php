@@ -12,18 +12,17 @@
       <li class="list-group-item"><a href="{{route('q1_couriers')}}">1.Написать запросы, позволяющие вводить новые данные в существующие таблицы БД (курьеры).</a></li>
       <li class="list-group-item"><a href="{{route('q1_categories')}}">1.Написать запросы, позволяющие вводить новые данные в существующие таблицы БД (категории).</a></li>
 
-      {{--<li class="list-group-item"><a href="{{route()}}">2.Вывести список всех товаров, которые в наличие.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">3.Найти товары со скидкой больше 20 %.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">4.Найти все новинки товаров.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">5.Вывести все товары, в составе которых есть «шерсть».</a></li>
-      <li class="list-group-item"><a href="{{route()}}">6.Вывести все товары с весом меньше 200 г.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">7.Найти все товары с категорией «Овощи».</a></li>
-      <li class="list-group-item"><a href="{{route()}}">8.Вывести список категорий товаров в алфавитном порядке.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">9.Допустим, что изменилась политика компании. Поэтому нужно обновить данные о пользователях: изменить роль с «пользователь» на «клиент».</a></li>
-      <li class="list-group-item"><a href="{{route()}}">10.Вывести всех курьеров с именем «Иван».</a></li>
-      <li class="list-group-item"><a href="{{route()}}">11.Вывести список всех свободных курьеров.</a></li>
-      <li class="list-group-item"><a href="{{route()}}">12.Изменить статус всех занятых курьеров на «свободен».</a></li>--}}
-
+      <li class="list-group-item"><a href="{{route('q2')}}">2.Вывести список всех товаров, которые в наличие.</a></li>
+      <li class="list-group-item"><a href="{{route('q3')}}">3.Найти товары со скидкой больше 20 %.</a></li>
+      <li class="list-group-item"><a href="{{route('q4')}}">4.Найти все новинки товаров.</a></li>
+      <li class="list-group-item"><a href="{{route('q5')}}">5.Вывести все товары, в составе которых есть «шерсть».</a></li>
+      <li class="list-group-item"><a href="{{route('q6')}}">6.Вывести все товары с весом меньше 200 г.</a></li>
+      <li class="list-group-item"><a href="{{route('q7')}}">7.Найти все товары с категорией «Овощи».</a></li>
+      <li class="list-group-item"><a href="{{route('q8')}}">8.Вывести список категорий товаров в алфавитном порядке.</a></li>
+      <li class="list-group-item"><a href="{{route('q9')}}">9.Допустим, что изменилась политика компании. Поэтому нужно обновить данные о пользователях: изменить роль с «пользователь» на «клиент».</a></li>
+      <li class="list-group-item"><a href="{{route('q10')}}">10.Вывести всех курьеров с именем «Иван».</a></li>
+      <li class="list-group-item"><a href="{{route('q11')}}">11.Вывести список всех свободных курьеров.</a></li>
+      <li class="list-group-item"><a href="{{route('q12')}}">12.Изменить статус всех занятых курьеров на «свободен».</a></li>
       <li class="list-group-item"><a href="{{route('q13')}}">13.Получить информацию о товарах, которые есть в наличии в определённом весе.</a></li>
       <li class="list-group-item"><a href="{{route('q14')}}">14.Узнать количество товаров каждой категории.</a></li>
       <li class="list-group-item"><a href="{{route('q15')}}">15.Определить самые популярные товары.</a></li>
